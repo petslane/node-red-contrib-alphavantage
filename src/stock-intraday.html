@@ -1,0 +1,134 @@
+<script type="text/javascript">
+    RED.nodes.registerType('alphavantage-stock-intraday', {
+        category: 'finance',
+        color: '#f0f0f0',
+        defaults: {
+            apiConfig: { value: "", type: "alphavantage-config" },
+            name: { value: "" },
+            interval: { value: "" },
+            symbol: { value: "" },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "alphavantage.png",
+        label: function () {
+            if (this.name) {
+                return this.name;
+            }
+            const symbol = this.symbol;
+            const interval = this.interval;
+            if (this.interval && this.symbol) {
+                return `${symbol} (${interval}m)`;
+            }
+            return "Stock intraday";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="alphavantage-stock-intraday">
+    <div class="form-row">
+        <label for="node-input-apiConfig"><i class="fa fa-key"></i> API key</label>
+        <input type="text" id="node-input-apiConfig" placeholder="API key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br />
+    <div class="form-row">
+        <label for="node-input-symbol"><i class="fa fa-building"></i>Symbol</label>
+        <input type="text" id="node-input-symbol" placeholder="Symbol">
+        <br />
+        <small style="padding-left: 100px;">Incoming <code>msg.symbol</code> overwrites this value</small>
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-clock-o"></i> Interval</label>
+        <select id="node-input-interval" placeholder="Interval">
+            <option value="1">1 min</option>
+            <option value="5">5 min</option>
+            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="60">60 min</option>
+        </select>
+        <br />
+        <small style="padding-left: 100px;">Incoming <code>msg.interval</code> overwrites this value</small>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="alphavantage-stock-intraday">
+    <p>AlphaVantage powered node to get intraday time series (timestamp, open, high, low, close, volume) of the equity specified</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">symbol <span class="property-type">(optional) string</span></dt>
+        <dd>
+            The name of the equity of your choice.
+            This overwrites node property.
+            For example: MSFT
+        </dd>
+        <dt class="optional">interval <span class="property-type">(optional) number</span></dt>
+        <dd>
+            Time interval between two consecutive data points in the time series.
+            This overwrites node property.
+            The following values are supported: 1min, 5min, 15min, 30min, 60min
+        </dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>
+            <dl class="message-properties">
+                <dt>payload.data <span class="property-type">number</span></dt>
+                <ul>
+                    <dl class="message-properties">
+                        <dt>information <span class="property-type">string</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>symbol <span class="property-type">string</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>last_refreshed <span class="property-type">string</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>interval <span class="property-type">string</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>output_size <span class="property-type">string</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>time_zone <span class="property-type">string</span></dt>
+                    </dl>
+                </ul>
+            </dl>
+            <dl class="message-properties">
+                <dt>payload.series[date_time] <span class="property-type">number</span></dt>
+                <ul>
+                    <dl class="message-properties">
+                        <dt>open <span class="property-type">number</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>high <span class="property-type">number</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>low <span class="property-type">number</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>close <span class="property-type">number</span></dt>
+                    </dl>
+                    <dl class="message-properties">
+                        <dt>volume <span class="property-type">number</span></dt>
+                    </dl>
+                </ul>
+            </dl>
+        </li>
+    </ol>
+
+    <h3>Details</h3>
+    <p>API key is required to use this node. Claim your free API key <a href="https://www.alphavantage.co/support/#api-key">here</a>.</p>
+
+    <h3>References</h3>
+    <ul>
+        <li><a href="https://www.alphavantage.co/documentation/#intraday">AlphaVantage API docs</a></li>
+    </ul>
+
+</script>

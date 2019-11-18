@@ -1,0 +1,94 @@
+<script type="text/javascript">
+    RED.nodes.registerType('alphavantage-forex', {
+        category: 'finance',
+        color: '#f0f0f0',
+        defaults: {
+            apiConfig: { value: "", type: "alphavantage-config" },
+            name: { value: "" },
+            fromCurrency: { value: "" },
+            toCurrency: { value: "" },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "alphavantage.png",
+        label: function () {
+            if (this.name) {
+                return this.name;
+            }
+            const from = this.fromCurrency || '?';
+            const to = this.toCurrency || '?';
+            if (this.fromCurrency || this.toCurrency) {
+                return `FX: ${from} › ${to}`;
+            }
+            return "forex";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="alphavantage-forex">
+    <div class="form-row">
+        <label for="node-input-apiConfig"><i class="fa fa-key"></i> API</label>
+        <input type="text" id="node-input-apiConfig" placeholder="API key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-fromCurrency"><i class="fa fa-usd"></i>From currency</label>
+        <input type="text" id="node-input-fromCurrency" placeholder="From currency">
+    </div>
+    <div class="form-row">
+        <label for="node-input-toCurrency"><i class="fa fa-eur"></i>To currency</label>
+        <input type="text" id="node-input-toCurrency" placeholder="To currency">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="alphavantage-forex">
+    <p>AlphaVantage powered node to get exchange rate</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">fromCurrency <span class="property-type">(optional) string</span></dt>
+        <dd>
+            The currency you would like to get the exchange rate for.
+            It can either be a physical currency or digital/crypto currency.
+            This overwrites node property.
+            For example: USD or BTC.
+        </dd>
+        <dt class="optional">toCurrency <span class="property-type">(optional) string</span></dt>
+        <dd>
+            The currency you would like to get the exchange rate for.
+            It can either be a physical currency or digital/crypto currency.
+            This overwrites node property.
+            For example: USD or BTC.
+        </dd>
+        <dt class="optional">amount <span class="property-type">(optional) number</span></dt>
+        <dd>
+            If provided, the output will contain this amount in <code>toCurrency</code> currency.
+        </dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>
+            <dl class="message-properties">
+                <dt>payload.rate <span class="property-type">number</span></dt>
+                <dd>Exchange rate for <code>fromCurrency</code> and <code>toCurrency</code></dd>
+            </dl>
+            <dl class="message-properties">
+                <dt>payload.amount <span class="property-type">number</span></dt>
+                <dd>If amount was passed to input, then this is same amount in <code>toCurrency</code></dd>
+            </dl>
+        </li>
+    </ol>
+
+    <h3>Details</h3>
+    <p>API key is required to use this node. Claim your free API key <a href="https://www.alphavantage.co/support/#api-key">here</a>.</p>
+
+    <h3>References</h3>
+    <ul>
+        <li><a href="https://www.alphavantage.co/documentation/#currency-exchange">AlphaVantage API docs</a></li>
+    </ul>
+
+</script>

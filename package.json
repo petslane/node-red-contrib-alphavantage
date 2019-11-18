@@ -1,0 +1,25 @@
+{
+    "name": "node-red-contrib-alphavantage",
+    "version": "0.0.1",
+    "description": "Alpha Vantage node for node-red",
+    "type": "module",
+    "dependencies": {
+        "alphavantage": "^1.2.6"
+    },
+    "keywords": [
+        "alpha",
+        "alpha vantage",
+        "alphavantage",
+        "node-red",
+        "stocks",
+        "stock market",
+        "vantage"
+    ],
+    "node-red": {
+        "nodes": {
+            "alphavantage-forex": "src/forex.js",
+            "alphavantage-stock-intraday": "src/stock-intraday.js",
+            "alphavantage-config": "src/config.js"
+        }
+    }
+}
