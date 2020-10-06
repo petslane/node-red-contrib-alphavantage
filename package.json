@@ -3,8 +3,24 @@
     "version": "0.0.1",
     "description": "Alpha Vantage node for node-red",
     "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/petslane/node-red-contrib-alphavantage.git"
+    },
+    "bugs": {
+        "url": "https://github.com/petslane/node-red-contrib-alphavantage/issues"
+    },
     "dependencies": {
         "alphavantage": "^1.2.6"
+    },
+    "contributors": [
+        {
+            "name": "Peeter Normak",
+            "email": "peeter.normak@eesti.ee"
+        }
+    ],
+    "author": {
+        "name": "Peeter Normak"
     },
     "keywords": [
         "alpha",
