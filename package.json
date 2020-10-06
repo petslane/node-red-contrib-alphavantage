@@ -2,7 +2,7 @@
     "name": "node-red-contrib-alphavantage",
     "version": "0.0.1",
     "description": "Alpha Vantage node for node-red",
-    "type": "module",
+    "type": "commonjs",
     "repository": {
         "type": "git",
         "url": "https://github.com/petslane/node-red-contrib-alphavantage.git"
