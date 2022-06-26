@@ -18,13 +18,13 @@ npm install node-red-contrib-alphavantage
 
 Stock Time Series
  - [X] Intraday
- - [ ] Daily
+ - [X] Daily
  - [ ] Daily Adjusted
  - [ ] Weekly
  - [ ] Weekly Adjusted
  - [ ] Monthly
  - [ ] Monthly Adjusted
- - [ ] Quote Endpoint
+ - [X] Quote Endpoint
  - [ ] Search Endpoint
 
 Forex (FX)

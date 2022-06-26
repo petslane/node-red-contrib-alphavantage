@@ -2,15 +2,22 @@
     RED.nodes.registerType('alphavantage-config',{
         category: 'config',
         defaults: {
-            apiKey: {value:"",required:true}
+            name: { value: "" },
         },
-        label: function() {
-            return this.apiKey.substring(0, 5) + '...';
+        credentials: {
+            apiKey: {value:"", required:true}
+        },
+        label: function () {
+            return "Alphavantage API Key";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="alphavantage-config">
+<script type="text/html" data-template-name="alphavantage-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" />
+    </div>
     <div class="form-row">
         <label for="node-config-input-apiKey"><i class="fa fa-key"></i> API key</label>
         <input type="text" id="node-config-input-apiKey">

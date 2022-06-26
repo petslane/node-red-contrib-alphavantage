@@ -1,6 +1,21 @@
 module.exports = function(RED) {
-    RED.nodes.registerType("alphavantage-config", function (n) {
-        RED.nodes.createNode(this,n);
-        this.apiKey = n.apiKey;
-    });
+
+	function avInstance(n) {
+		RED.nodes.createNode(this,n)
+
+		if (this.credentials.apiKey) {
+			this.apiKey = this.credentials.apiKey
+
+
+		} else if (n.apiKey && !this.credentials.apiKey) {
+			// Backward compatibility
+			this.apiKey = n.apiKey
+		}
+	}
+
+	RED.nodes.registerType("alphavantage-config", avInstance, {
+		credentials: {
+			apiKey: { type: "text" },
+		}
+	})
 }

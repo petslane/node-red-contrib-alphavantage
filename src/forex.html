@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('alphavantage-forex', {
-        category: 'finance',
-        color: '#f0f0f0',
+        category: 'alpha vantage',
+        color: '#5cc7b2',
         defaults: {
             apiConfig: { value: "", type: "alphavantage-config" },
             name: { value: "" },
@@ -20,31 +20,42 @@
             if (this.fromCurrency || this.toCurrency) {
                 return `FX: ${from} › ${to}`;
             }
-            return "forex";
-        }
+            return "Forex (FX) Rate";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        paletteLabel: "Forex (FX) Rate"
     });
 </script>
 
-<script type="text/x-red" data-template-name="alphavantage-forex">
+<script type="text/html" data-template-name="alphavantage-forex">
     <div class="form-row">
         <label for="node-input-apiConfig"><i class="fa fa-key"></i> API</label>
         <input type="text" id="node-input-apiConfig" placeholder="API key">
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <br />
+        <small style="padding-left: 100px;">Incoming <code>msg.apiKey</code> overwrites this value</small>
     </div>
     <div class="form-row">
         <label for="node-input-fromCurrency"><i class="fa fa-usd"></i>From currency</label>
         <input type="text" id="node-input-fromCurrency" placeholder="From currency">
+        <br />
+        <small style="padding-left: 100px;">Incoming <code>msg.fromCurrency</code> overwrites this value</small>
     </div>
     <div class="form-row">
         <label for="node-input-toCurrency"><i class="fa fa-eur"></i>To currency</label>
         <input type="text" id="node-input-toCurrency" placeholder="To currency">
+        <br />
+        <small style="padding-left: 100px;">Incoming <code>msg.toCurrency</code> overwrites this value</small>
+    </div>
+    <hr>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="alphavantage-forex">
+<script type="text/html" data-help-name="alphavantage-forex">
     <p>AlphaVantage powered node to get exchange rate</p>
 
     <h3>Inputs</h3>

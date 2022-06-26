@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-alphavantage",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Alpha Vantage node for node-red",
     "type": "commonjs",
     "repository": {
@@ -11,7 +11,7 @@
         "url": "https://github.com/petslane/node-red-contrib-alphavantage/issues"
     },
     "dependencies": {
-        "alphavantage": "^1.2.6"
+        "alphavantage": "^2.3.0"
     },
     "contributors": [
         {
@@ -34,8 +34,13 @@
     "node-red": {
         "nodes": {
             "alphavantage-forex": "src/forex.js",
+            "alphavantage-stock-daily": "src/stock-daily.js",
             "alphavantage-stock-intraday": "src/stock-intraday.js",
+            "alphavantage-stock-quote": "src/stock-quote.js",
             "alphavantage-config": "src/config.js"
         }
+    },
+    "devDependencies": {
+        "eslint": "^8.18.0"
     }
 }
