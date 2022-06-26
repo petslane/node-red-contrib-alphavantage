@@ -6,7 +6,7 @@ const wrapDone = require("./util/wrapDone")
 const wrapSend = require("./util/wrapSend")
 
 module.exports = (RED) => {
-	RED.nodes.registerType("alphavantage-stock-intraday", function (config) {
+	RED.nodes.registerType("alphavantage-stock-daily", function (config) {
 
 		RED.nodes.createNode(this, config)
 
@@ -22,7 +22,6 @@ module.exports = (RED) => {
 				const api = setClient(msg.apiKey || apiConfig.apiKey )
 
 				const symbol = msg.symbol || config.symbol
-				const interval = msg.interval || config.interval
 				const outputSize = msg.outputSize || config.outputSize || "compact"
                 
 
@@ -31,24 +30,16 @@ module.exports = (RED) => {
 					Done()
 					return
 				}
-				if (!interval || interval === "") {
-					this.warn("Missing \"interval\" property")
-					Done()
-					return
-				}
 
-				this.debug(`Requesting stock intraday data for ${symbol} with ${interval} interval`)
+				this.debug(`Requesting stock time series daily data for ${symbol}`)
 
-				const result = api.util.polish(await api.data.intraday(symbol, outputSize, "json", `${interval}min`))
+				const result = api.util.polish(await api.data.daily(symbol, outputSize, "json"))
 
-				const timeSeriesKey = `Time Series (${interval}min)`
-
+				result.series = mapSeriesObj(result.data) // backward compat
+				result.seriesArray = mapSeriesArray(result.data) // new array
 				result.data = mapData(result.meta) // backward compat
-				result.series = mapSeriesObj(result[timeSeriesKey]) // backward compat
-				result.seriesArray = mapSeriesArray(result[timeSeriesKey]) // new array
 				
 				delete(result.meta)
-				delete(result[timeSeriesKey])
 
 				msg.payload = result
 

@@ -1,0 +1,208 @@
+[
+    {
+        "id": "0135b35c7dcebacb",
+        "type": "alphavantage-stock-intraday",
+        "z": "50d1d2e5dfc23965",
+        "apiConfig": "73099f62f516812f",
+        "name": "",
+        "interval": "15",
+        "symbol": "MSFT",
+        "outputSize": "compact",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "633a77d60a53b591"
+            ]
+        ]
+    },
+    {
+        "id": "6d561afe43906d98",
+        "type": "alphavantage-stock-quote",
+        "z": "50d1d2e5dfc23965",
+        "apiConfig": "73099f62f516812f",
+        "name": "",
+        "symbol": "",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "633a77d60a53b591"
+            ]
+        ]
+    },
+    {
+        "id": "decb36a60bf5d9fc",
+        "type": "alphavantage-forex",
+        "z": "50d1d2e5dfc23965",
+        "apiConfig": "73099f62f516812f",
+        "name": "",
+        "fromCurrency": "USD",
+        "toCurrency": "GBP",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "633a77d60a53b591"
+            ]
+        ]
+    },
+    {
+        "id": "67169ca79b8e6dec",
+        "type": "inject",
+        "z": "50d1d2e5dfc23965",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "tsintraday",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "0135b35c7dcebacb"
+            ]
+        ]
+    },
+    {
+        "id": "9f969d7e8dc57a37",
+        "type": "inject",
+        "z": "50d1d2e5dfc23965",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "symbol",
+                "v": "MSFT",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "quote",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "6d561afe43906d98"
+            ]
+        ]
+    },
+    {
+        "id": "af3fba0eaebe2ffd",
+        "type": "inject",
+        "z": "50d1d2e5dfc23965",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "forex",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "decb36a60bf5d9fc"
+            ]
+        ]
+    },
+    {
+        "id": "633a77d60a53b591",
+        "type": "debug",
+        "z": "50d1d2e5dfc23965",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8ee8f5d47ab3e62b",
+        "type": "alphavantage-stock-daily",
+        "z": "50d1d2e5dfc23965",
+        "apiConfig": "73099f62f516812f",
+        "name": "microsoft",
+        "symbol": "MSFT",
+        "outputSize": "compact",
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "633a77d60a53b591"
+            ]
+        ]
+    },
+    {
+        "id": "e973af63d8041f6e",
+        "type": "inject",
+        "z": "50d1d2e5dfc23965",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "tsdaily",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "8ee8f5d47ab3e62b"
+            ]
+        ]
+    },
+    {
+        "id": "73099f62f516812f",
+        "type": "alphavantage-config",
+        "name": ""
+    }
+]

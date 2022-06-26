@@ -1,11 +1,10 @@
 <script type="text/javascript">
-    RED.nodes.registerType('alphavantage-stock-intraday', {
+    RED.nodes.registerType('alphavantage-stock-daily', {
         category: 'alpha vantage',
         color: '#5cc7b2',
         defaults: {
             apiConfig: { value: "", type: "alphavantage-config" },
             name: { value: "" },
-            interval: { value: "60" },
             symbol: { value: "" },
             outputSize: { value: "compact" }
         },
@@ -17,20 +16,19 @@
                 return this.name;
             }
             const symbol = this.symbol;
-            const interval = this.interval;
-            if (this.interval && this.symbol) {
-                return `${symbol} (${interval}m)`;
+            if (symbol) {
+                return symbol;
             }
-            return "Stock Time Series Intraday";
+            return "Stock Time Series Daily";
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";
         },
-        paletteLabel: "Stock Time Series Intraday"
+        paletteLabel: "Stock Time Series Daily"
     });
 </script>
 
-<script type="text/html" data-template-name="alphavantage-stock-intraday">
+<script type="text/html" data-template-name="alphavantage-stock-daily">
     <div class="form-row">
         <label for="node-input-apiConfig"><i class="fa fa-key"></i> API key</label>
         <input type="text" id="node-input-apiConfig" placeholder="API key">
@@ -42,18 +40,6 @@
         <input type="text" id="node-input-symbol" placeholder="Symbol">
         <br />
         <small style="padding-left: 100px;">Incoming <code>msg.symbol</code> overwrites this value</small>
-    </div>
-    <div class="form-row">
-        <label for="node-input-interval"><i class="fa fa-clock-o"></i> Interval</label>
-        <select id="node-input-interval" placeholder="Interval">
-            <option value="1">1 min</option>
-            <option value="5">5 min</option>
-            <option value="15">15 min</option>
-            <option value="30">30 min</option>
-            <option value="60">60 min</option>
-        </select>
-        <br />
-        <small style="padding-left: 100px;">Incoming <code>msg.interval</code> overwrites this value</small>
     </div>
     <div class="form-row">
         <label for="node-input-outputSize"><i class="fa fa-list-ul"></i> Output Size</label>
@@ -71,8 +57,8 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="alphavantage-stock-intraday">
-    <p>AlphaVantage powered node to get intraday time series (timestamp, open, high, low, close, volume) of the equity specified</p>
+<script type="text/html" data-help-name="alphavantage-stock-daily">
+    <p>AlphaVantage powered node to get daily time series (timestamp, open, high, low, close, volume) of the equity specified</p>
 
     <h3>Inputs</h3>
     <dl class="message-properties">
@@ -81,12 +67,6 @@
             The name of the equity of your choice.
             This overwrites node property.
             For example: MSFT
-        </dd>
-        <dt class="optional">interval <span class="property-type">(optional) number</span></dt>
-        <dd>
-            Time interval between two consecutive data points in the time series.
-            This overwrites node property.
-            The following values are supported: 1min, 5min, 15min, 30min, 60min
         </dd>
     </dl>
 
@@ -104,9 +84,6 @@
                     </dl>
                     <dl class="message-properties">
                         <dt>last_refreshed <span class="property-type">string</span></dt>
-                    </dl>
-                    <dl class="message-properties">
-                        <dt>interval <span class="property-type">string</span></dt>
                     </dl>
                     <dl class="message-properties">
                         <dt>output_size <span class="property-type">string</span></dt>
@@ -167,7 +144,7 @@
 
     <h3>References</h3>
     <ul>
-        <li><a href="https://www.alphavantage.co/documentation/#intraday">AlphaVantage API docs</a></li>
+        <li><a href="https://www.alphavantage.co/documentation/#daily">AlphaVantage API docs</a></li>
     </ul>
 
 </script>
