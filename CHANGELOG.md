@@ -1,5 +1,9 @@
 # node-red-contrib-alphavantage - Change Log
 
+## [0.2.0] - 18/07/2022
+
+- Changed node names to make them unique
+
 ## [0.1.0] - 18/07/2022
 
 :fire: Forked from [petslane/node-red-contrib-alphavantage](https://github.com/petslane/node-red-contrib-alphavantage) due to delayed PR :fire:

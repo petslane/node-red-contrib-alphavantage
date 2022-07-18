@@ -1,9 +1,9 @@
 <script type="text/javascript">
-    RED.nodes.registerType('alphavantage-stock-daily', {
+    RED.nodes.registerType('alphavantage-core-stock-daily', {
         category: 'alpha vantage',
         color: '#5cc7b2',
         defaults: {
-            apiConfig: { value: "", type: "alphavantage-config" },
+            apiConfig: { value: "", type: "alphavantage-api-config" },
             name: { value: "" },
             symbol: { value: "" },
             outputSize: { value: "compact" }
@@ -28,7 +28,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="alphavantage-stock-daily">
+<script type="text/html" data-template-name="alphavantage-core-stock-daily">
     <div class="form-row">
         <label for="node-input-apiConfig"><i class="fa fa-key"></i> API key</label>
         <input type="text" id="node-input-apiConfig" placeholder="API key">
@@ -57,7 +57,7 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="alphavantage-stock-daily">
+<script type="text/html" data-help-name="alphavantage-core-stock-daily">
     <p>AlphaVantage powered node to get daily time series (timestamp, open, high, low, close, volume) of the equity specified</p>
 
     <h3>Inputs</h3>

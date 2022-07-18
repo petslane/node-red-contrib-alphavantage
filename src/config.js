@@ -13,7 +13,7 @@ module.exports = function(RED) {
 		}
 	}
 
-	RED.nodes.registerType("alphavantage-config", avInstance, {
+	RED.nodes.registerType("alphavantage-api-config", avInstance, {
 		credentials: {
 			apiKey: { type: "text" },
 		}

@@ -6,7 +6,7 @@ const wrapDone = require("./util/wrapDone")
 const wrapSend = require("./util/wrapSend")
 
 module.exports = (RED) => {
-	RED.nodes.registerType("alphavantage-stock-daily", function (config) {
+	RED.nodes.registerType("alphavantage-core-stock-daily", function (config) {
 
 		RED.nodes.createNode(this, config)
 

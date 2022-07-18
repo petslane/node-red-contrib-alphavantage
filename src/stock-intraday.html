@@ -1,9 +1,9 @@
 <script type="text/javascript">
-    RED.nodes.registerType('alphavantage-stock-intraday', {
+    RED.nodes.registerType('alphavantage-core-stock-intraday', {
         category: 'alpha vantage',
         color: '#5cc7b2',
         defaults: {
-            apiConfig: { value: "", type: "alphavantage-config" },
+            apiConfig: { value: "", type: "alphavantage-api-config" },
             name: { value: "" },
             interval: { value: "60" },
             symbol: { value: "" },
@@ -30,7 +30,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="alphavantage-stock-intraday">
+<script type="text/html" data-template-name="alphavantage-core-stock-intraday">
     <div class="form-row">
         <label for="node-input-apiConfig"><i class="fa fa-key"></i> API key</label>
         <input type="text" id="node-input-apiConfig" placeholder="API key">
@@ -71,7 +71,7 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="alphavantage-stock-intraday">
+<script type="text/html" data-help-name="alphavantage-core-stock-intraday">
     <p>AlphaVantage powered node to get intraday time series (timestamp, open, high, low, close, volume) of the equity specified</p>
 
     <h3>Inputs</h3>

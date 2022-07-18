@@ -1,6 +1,6 @@
 {
     "name": "@bikerpatch/node-red-contrib-alphavantage",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Alpha Vantage node for Node-RED",
     "type": "commonjs",
     "repository": {
@@ -37,11 +37,11 @@
     "node-red": {
         "version": ">=2.2.2",
         "nodes": {
-            "alphavantage-forex": "src/forex.js",
-            "alphavantage-stock-daily": "src/stock-daily.js",
-            "alphavantage-stock-intraday": "src/stock-intraday.js",
-            "alphavantage-stock-quote": "src/stock-quote.js",
-            "alphavantage-config": "src/config.js"
+            "alphavantage-forex-rate": "src/forex.js",
+            "alphavantage-core-stock-daily": "src/stock-daily.js",
+            "alphavantage-core-stock-intraday": "src/stock-intraday.js",
+            "alphavantage-core-stock-quote": "src/stock-quote.js",
+            "alphavantage-api-config": "src/config.js"
         }
     },
     "scripts": {

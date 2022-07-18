@@ -1,9 +1,9 @@
 <script type="text/javascript">
-    RED.nodes.registerType('alphavantage-forex', {
+    RED.nodes.registerType('alphavantage-forex-rate', {
         category: 'alpha vantage',
         color: '#5cc7b2',
         defaults: {
-            apiConfig: { value: "", type: "alphavantage-config" },
+            apiConfig: { value: "", type: "alphavantage-api-config" },
             name: { value: "" },
             fromCurrency: { value: "" },
             toCurrency: { value: "" },
@@ -29,7 +29,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="alphavantage-forex">
+<script type="text/html" data-template-name="alphavantage-forex-rate">
     <div class="form-row">
         <label for="node-input-apiConfig"><i class="fa fa-key"></i> API</label>
         <input type="text" id="node-input-apiConfig" placeholder="API key">
@@ -55,7 +55,7 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="alphavantage-forex">
+<script type="text/html" data-help-name="alphavantage-forex-rate">
     <p>AlphaVantage powered node to get exchange rate</p>
 
     <h3>Inputs</h3>

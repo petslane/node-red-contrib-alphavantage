@@ -1,7 +1,7 @@
 [
     {
         "id": "0135b35c7dcebacb",
-        "type": "alphavantage-stock-intraday",
+        "type": "alphavantage-core-stock-intraday",
         "z": "50d1d2e5dfc23965",
         "apiConfig": "73099f62f516812f",
         "name": "",
@@ -18,7 +18,7 @@
     },
     {
         "id": "6d561afe43906d98",
-        "type": "alphavantage-stock-quote",
+        "type": "alphavantage-core-stock-quote",
         "z": "50d1d2e5dfc23965",
         "apiConfig": "73099f62f516812f",
         "name": "",
@@ -33,7 +33,7 @@
     },
     {
         "id": "decb36a60bf5d9fc",
-        "type": "alphavantage-forex",
+        "type": "alphavantage-forex-rate",
         "z": "50d1d2e5dfc23965",
         "apiConfig": "73099f62f516812f",
         "name": "",
@@ -157,7 +157,7 @@
     },
     {
         "id": "8ee8f5d47ab3e62b",
-        "type": "alphavantage-stock-daily",
+        "type": "alphavantage-core-stock-daily",
         "z": "50d1d2e5dfc23965",
         "apiConfig": "73099f62f516812f",
         "name": "microsoft",
@@ -202,7 +202,7 @@
     },
     {
         "id": "73099f62f516812f",
-        "type": "alphavantage-config",
+        "type": "alphavantage-api-config",
         "name": ""
     }
 ]
