@@ -1,26 +1,29 @@
 {
-    "name": "node-red-contrib-alphavantage",
+    "name": "@bikerpatch/node-red-contrib-alphavantage",
     "version": "0.1.0",
-    "description": "Alpha Vantage node for node-red",
+    "description": "Alpha Vantage node for Node-RED",
     "type": "commonjs",
     "repository": {
         "type": "git",
-        "url": "https://github.com/petslane/node-red-contrib-alphavantage.git"
+        "url": "https://github.com/bikerpatch/node-red-contrib-alphavantage"
     },
     "bugs": {
-        "url": "https://github.com/petslane/node-red-contrib-alphavantage/issues"
+        "url": "https://github.com/bikerpatch/node-red-contrib-alphavantage/issues"
     },
     "dependencies": {
         "alphavantage": "^2.3.0"
     },
     "contributors": [
         {
+            "name": "bikerpatch"
+        },
+        {
             "name": "Peeter Normak",
             "email": "peeter.normak@eesti.ee"
         }
     ],
     "author": {
-        "name": "Peeter Normak"
+        "name": "bikerpatch"
     },
     "keywords": [
         "alpha",
@@ -32,6 +35,7 @@
         "vantage"
     ],
     "node-red": {
+        "version": ">=2.2.2",
         "nodes": {
             "alphavantage-forex": "src/forex.js",
             "alphavantage-stock-daily": "src/stock-daily.js",
@@ -40,6 +44,7 @@
             "alphavantage-config": "src/config.js"
         }
     },
+    "license": "MIT",
     "devDependencies": {
         "eslint": "^8.18.0"
     }

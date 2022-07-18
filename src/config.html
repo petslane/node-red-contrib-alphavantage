@@ -8,6 +8,9 @@
             apiKey: {value:"", required:true}
         },
         label: function () {
+            if (this.name) {
+                return `API Key: ${this.name}`;
+            }
             return "Alphavantage API Key";
         }
     });
@@ -20,6 +23,23 @@
     </div>
     <div class="form-row">
         <label for="node-config-input-apiKey"><i class="fa fa-key"></i> API key</label>
-        <input type="text" id="node-config-input-apiKey">
+        <input type="password" id="node-config-input-apiKey">
     </div>
 </script>
+
+<script type="text/markdown" data-help-name="azure-kv-instance">
+    ### Instance Configuration
+    
+    In order to use the node capabilities, you must first create an Alpha Vantage API key instance.  You'll need your API key or use the limited `demo` key.
+    Claim your free API key [here](https://www.alphavantage.co/support/#api-key).
+    Free API key allowes up to 5 API requests per minute and 500 requests per day.
+  
+    This plugin requries the following instance connection attributes:
+  
+    * **API key** - Provided by Alpha Vantage
+      
+    All the above connection attributes are stored in the Node-RED credential store and are not exported with flows.
+
+    Optionally, you can leave the key blank and pass in the API key as the parameter `msg.apiKey`.  Use this approach if storing the API key in the `credentials` node or retrieving from another an external source in an earlier node.
+  
+  </script>

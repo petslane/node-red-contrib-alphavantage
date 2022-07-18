@@ -1,6 +1,8 @@
 # node-red-contrib-alphavantage - Change Log
 
-## [0.1.0] - 26/06/2022
+## [0.1.0] - 18/07/2022
+
+:fire: Forked from [petslane/node-red-contrib-alphavantage](https://github.com/petslane/node-red-contrib-alphavantage) due to delayed PR :fire:
 
 - Added new `msg.seriesArray` output that transforms object of objects returned from AV to an array of objects
 - Add eslint dev dependency for code linting
@@ -28,4 +30,4 @@
 
 ## [0.0.2] - 06/10/2020
 
-- Initial release
+- Initial release https://flows.nodered.org/node/node-red-contrib-alphavantage
